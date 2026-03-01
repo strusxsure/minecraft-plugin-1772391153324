@@ -1,0 +1,15 @@
+name: FireMace
+version: 1.0.0
+main: com.stormai.plugin.FireMacePlugin
+api-version: 1.21
+description: Adds a Fire Mace weapon with area-based heat damage, lava trap, mob spawn, and flame wall.
+author: StormAI
+commands:
+  firemace:
+    description: Reload the FireMace configuration.
+    usage: /firemace reload
+    permission: firemace.reload
+permissions:
+  firemace.reload:
+    description: Allows reloading the FireMace config.
+    default: op
