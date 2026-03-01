@@ -1,0 +1,27 @@
+# Fire Mace Configuration (Custom Model Data: 1)
+fire-mace:
+  duration: 200 # Ticks (10 seconds)
+  damage-interval: 20 # Apply damage every 20 ticks (1 second)
+  damage-amount: 2.0
+  damage-radius: 5.0
+  mob-spawn-interval: 40 # Spawn mob every 40 ticks (2 seconds)
+  mob-types:
+    - BLAZE
+    - MAGMA_CUBE
+    - ZOMBIFIED_PIGLIN
+  flame-wall:
+    enabled: true
+    length: 5
+    height: 3
+  lava-trap:
+    enabled: true
+    duration: 80 # Ticks (4 seconds)
+
+# Ice Mace Configuration (Custom Model Data: 2)
+ice-mace:
+  duration: 200 # Ticks (10 seconds)
+  slippery-floor-radius: 5.0
+  falling-block-interval: 40 # Trigger falling blocks every 40 ticks (2 seconds)
+  blindness-duration: 100 # Ticks (5 seconds)
+  freeze-max-stacks: 5
+  freeze-stack-interval: 20 # Increase freeze stack every 20 ticks (1 second)

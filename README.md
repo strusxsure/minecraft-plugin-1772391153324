@@ -1,56 +1,77 @@
-# FireMace Plugin
+# FireMace Plugin v1.1.0 - Now with Ice Mace!
 
-A Paper plugin for Minecraft 1.21 that adds a custom Fire Mace weapon.
+A Paper plugin for Minecraft 1.21 that adds two custom mace weapons with special area-based effects.
 
 ## Features
 
-- Right-click with the Fire Mace (custom model data: 1) to activate:
-  - Area-based heat damage over time
-  - Lava trap at the target location
-  - Spawning fire-related mobs (blazes, magma cubes)
-  - A timed flame wall in the direction you're looking
+### 🔥 Fire Mace (Custom Model Data: 1)
+Right-click on a block to activate:
+- **Area-based heat damage** over time
+- **Lava trap** at target location (temporary)
+- **Fire mob spawn zones** (Blazes, Magma Cubes, Zombified Piglins)
+- **Timed flame wall** in facing direction
+
+### ❄️ Ice Mace (Custom Model Data: 2)
+Right-click on a block to activate:
+- **Slippery floor effect**: Turns ground blocks to ice in a radius
+- **Random falling floor blocks**: Randomly removes ice blocks causing terrain instability
+- **Snow blindness effect**: Applies blindness to nearby players
+- **Freeze debuff**: Stacking slow effect (up to 5 stacks) that intensifies with time in area
+
+## Developer Requirements Implemented
+
+### Fire Mace:
+- ✅ Area-based heat damage system
+- ✅ Trigger blocks (lava trap)
+- ✅ Configurable damage rate
+- ✅ Mob spawn control
+
+### Ice Mace:
+- ✅ **Custom movement modifier**: Ice blocks create slippery surface
+- ✅ **Temporary block removal system**: Falling blocks mechanic removes ice randomly
+- ✅ **Vision reduction system**: Blindness potion effect
+- ✅ **Freeze stacking mechanic**: Slow effect stacks up to 5 times (amplifier 0-4)
 
 ## Requirements
 
 - Minecraft 1.21
-- Paper server 1.21 or compatible
+- Paper server 1.21 or compatible fork
 - Java 21
 
 ## Installation
 
 1. Build the plugin using Maven: `mvn clean package`
-2. Place the generated `FireMace-1.0.0.jar` in your server's `plugins` folder.
-3. Restart the server.
+2. Place the generated `FireMace-1.0.0.jar` in your server's `plugins/` folder
+3. Restart the server
+4. Configure `plugins/FireMace/config.yml` as needed
 
 ## Configuration
 
-After first run, a `config.yml` will be generated in the plugin's data folder. You can adjust:
+After first run, a `config.yml` will be generated with separate sections for each mace:
 
-- `duration`: How long the effect lasts (in ticks, 20 ticks = 1 second)
-- `damage-interval`: How often to apply damage (in ticks)
-- `damage-amount`: Amount of damage per interval
-- `damage-radius`: Radius of the damage area (in blocks)
-- `mob-spawn-interval`: How often to spawn mobs (in ticks)
-- `mob-types`: List of entity types to spawn (e.g., BLAZE, MAGMA_CUBE)
-- `flame-wall.enabled`: Enable/disable flame wall
-- `flame-wall.length`: Length of the flame wall
-- `flame-wall.height`: Height of the flame wall
-- `lava-trap.enabled`: Enable/disable lava trap
-- `lava-trap.duration`: How long the lava stays (in ticks)
+### Fire Mace Settings (`fire-mace`):
+- `duration`: Effect duration in ticks (default: 200 = 10 seconds)
+- `damage-interval`: Damage application interval (default: 20 ticks)
+- `damage-amount`: Damage per interval (default: 2.0)
+- `damage-radius`: Area radius in blocks (default: 5.0)
+- `mob-spawn-interval`: Mob spawn frequency (default: 40 ticks)
+- `mob-types`: List of entity types to spawn
+- `flame-wall.enabled`: Toggle flame wall
+- `flame-wall.length/dimensions`: Wall size
+- `lava-trap.enabled`: Toggle lava trap
+- `lava-trap.duration`: How long lava lasts
+
+### Ice Mace Settings (`ice-mace`):
+- `duration`: Effect duration in ticks (default: 200)
+- `slippery-floor-radius`: Ice floor radius (default: 5.0)
+- `falling-block-interval`: How often blocks fall (default: 40 ticks)
+- `blindness-duration`: Blindness effect duration (default: 100 ticks)
+- `freeze-max-stacks`: Maximum freeze stacks (default: 5)
+- `freeze-stack-interval`: How often stacks increase (default: 20 ticks)
 
 ## Usage
 
-Hold the Fire Mace (mace with custom model data 1) and right-click on a block to activate the effects.
+### Obtaining the Maces
+Use these commands (requires operator permissions):
 
-## Permissions
-
-- `firemace.reload` - Allows reloading the configuration with `/firemace reload`.
-
-## Notes
-
-- The Fire Mace is identified by custom model data 1. You must use a resource pack to give it that model, or use a command to create the item with that custom model data.
-- The plugin does not provide a way to obtain the mace; you must give it via command or creative mode.
-
-## Creating the Fire Mace Item
-
-You can give yourself the mace with:
+**Fire Mace (Custom Model Data 1):**

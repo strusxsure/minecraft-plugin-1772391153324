@@ -1,6 +1,6 @@
 name: Build Plugin
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -20,3 +20,9 @@ jobs:
         with:
           name: plugin-jar
           path: target/*.jar
+      - name: Check JAR exists
+        run: |
+          if [ ! -f target/FireMace-1.0.0.jar ]; then
+            echo "JAR file not found!"
+            exit 1
+          fi

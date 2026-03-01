@@ -8,7 +8,7 @@
     <artifactId>FireMace</artifactId>
     <version>1.0.0</version>
     <name>FireMace</name>
-    <description>A Minecraft plugin that adds a Fire Mace weapon.</description>
+    <description>A Minecraft plugin that adds Fire and Ice Mace weapons.</description>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>

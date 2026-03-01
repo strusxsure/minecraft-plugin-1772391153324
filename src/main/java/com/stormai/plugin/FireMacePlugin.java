@@ -5,31 +5,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FireMacePlugin extends JavaPlugin {
-    private final List<ActiveFireMaceEffect> activeEffects = new ArrayList<>();
+    private final List<MaceEffect> activeEffects = new ArrayList<>();
     private FireMace fireMace;
+    private IceMace iceMace;
 
     @Override
     public void onEnable() {
         saveDefaultConfig();
         fireMace = new FireMace(this);
-        getServer().getPluginManager().registerEvents(new FireMaceListener(this, fireMace), this);
+        iceMace = new IceMace(this);
+        getServer().getPluginManager().registerEvents(new MaceListener(this, fireMace, iceMace), this);
         getCommand("firemace").setExecutor(new ReloadCommand(this));
-        getLogger().info("FireMace plugin enabled!");
+        getLogger().info("FireMace plugin enabled with Ice Mace support!");
     }
 
     @Override
     public void onDisable() {
-        for (ActiveFireMaceEffect effect : new ArrayList<>(activeEffects)) {
+        for (MaceEffect effect : new ArrayList<>(activeEffects)) {
             effect.cancel();
         }
         getLogger().info("FireMace plugin disabled!");
     }
 
-    public void addActiveEffect(ActiveFireMaceEffect effect) {
+    public void addActiveEffect(MaceEffect effect) {
         activeEffects.add(effect);
     }
 
-    public void removeActiveEffect(ActiveFireMaceEffect effect) {
+    public void removeActiveEffect(MaceEffect effect) {
         activeEffects.remove(effect);
     }
 }
